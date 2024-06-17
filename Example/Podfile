@@ -1,0 +1,6 @@
+use_frameworks!
+target 'JCSwiftCommon_Tests' do
+  pod 'JCSwiftCommon', :path => '../'
+  
+  
+end
