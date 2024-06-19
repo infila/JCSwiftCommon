@@ -7,24 +7,26 @@
 
 import Foundation
 
-extension String {
-  public init<Subject>(typeName object: Subject) {
-    let mirror = Mirror(reflecting: object)
-    self.init(reflecting: mirror.subjectType)
+public extension String {
+  enum StringRandomStrategy {
+    case number
+    case chat
+    case numberAndChat
   }
 
-  public func lastComponent() -> String {
-    if lastIndex(of: ".") == nil {
-      return self
+  static func random(withLength length: UInt, strategy: StringRandomStrategy) -> String {
+    var range: String = ""
+    switch strategy {
+    case .number:
+      range = "1234567890"
+
+    case .chat:
+      range = "qwertyuiopasdfghjklzxcvbnm"
+    case .numberAndChat:
+      range = "1234567890qwertyuiopasdfghjklzxcvbnm"
     }
-    let component = split(separator: ".").last!
-    return String(component)
-  }
-
-  public static func random(withLength length: UInt) -> String {
-    let numberAndChars = "1234567890qwertyuiopasdfghjklzxcvbnm"
     var randomOri = [String]()
-    numberAndChars.forEach { randomOri.append(String($0)) }
+    range.forEach { randomOri.append(String($0)) }
     var result = ""
     for _ in 0 ..< length {
       result = result + randomOri.randomElement()!
@@ -32,7 +34,20 @@ extension String {
     return result
   }
 
-  public func toDictionary() -> [String: Any]? {
+  init<Subject>(typeName object: Subject) {
+    let mirror = Mirror(reflecting: object)
+    self.init(reflecting: mirror.subjectType)
+  }
+
+  func lastComponent() -> String {
+    if lastIndex(of: ".") == nil {
+      return self
+    }
+    let component = split(separator: ".").last!
+    return String(component)
+  }
+
+  func toDictionary() -> [String: Any]? {
     guard !isEmpty else { return nil }
 
     guard let dataSelf = data(using: .utf8) else {
@@ -46,7 +61,7 @@ extension String {
     return nil
   }
 
-  public func doubleValue() -> Double? {
+  func doubleValue() -> Double? {
     Double(self)
   }
 

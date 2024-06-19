@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension Thread {
-  public static func synchronized(_ lock: AnyObject, _ closure: () -> Void) {
+public extension Thread {
+  static func synchronized(_ lock: AnyObject, _ closure: () -> Void) {
     objc_sync_enter(lock)
     defer { objc_sync_exit(lock) }
     closure()

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct JCBundleFileLoader {
-  static func loadPlist<T: Decodable>(from fileName: String, decodeType: T.Type) -> T? {
+public struct JCBundleFileLoader {
+  public static func loadPlist<T: Decodable>(from fileName: String, decodeType: T.Type) -> T? {
     if let path = Bundle.main.path(forResource: fileName, ofType: "plist"),
        let xml = FileManager.default.contents(atPath: path),
        let plistInfo = try? PropertyListDecoder().decode(T.self, from: xml) {
@@ -18,7 +18,7 @@ struct JCBundleFileLoader {
     return nil
   }
 
-  static func loadJsonFile<T: Decodable>(from fileName: String, decodeType: T.Type) -> T? {
+  public static func loadJsonFile<T: Decodable>(from fileName: String, decodeType: T.Type) -> T? {
     var data = Data()
 
     guard let file = Bundle.main.url(forResource: fileName, withExtension: nil)

@@ -7,14 +7,23 @@
 
 import Foundation
 
-extension Array where Element: Equatable {
-  public mutating func remove(_ element: Element) {
+public extension Array where Element: Equatable {
+  mutating func remove(_ element: Element, onlyFirst: Bool = false) {
     if let index = firstIndex(of: element) {
       remove(at: index)
     }
+    if onlyFirst { return }
+
+    while true {
+      if let index = firstIndex(of: element) {
+        remove(at: index)
+      } else {
+        break
+      }
+    }
   }
 
-  public var unique: [Element] {
+  var unique: [Element] {
     var uniqueValues: [Element] = []
     forEach { item in
       if !uniqueValues.contains(item) {

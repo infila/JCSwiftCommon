@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Double {    
+public extension Double {    
     func roundDecimal(_ format: Int = 2) -> String {
         return String(format: "%.\(format)f", self)
     }

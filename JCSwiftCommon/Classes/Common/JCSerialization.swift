@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct JCSerialization {
-  static func decode<T: Decodable>(from data: Data, decodeType: T.Type) -> T? {
+public struct JCSerialization {
+  public static func decode<T: Decodable>(from data: Data, decodeType: T.Type) -> T? {
     do {
       let decoder = JSONDecoder()
       return try decoder.decode(T.self, from: data)
@@ -18,7 +18,7 @@ struct JCSerialization {
     return nil
   }
 
-  static func encode<T: Encodable>(_ value: T) -> Data? {
+  public static func encode<T: Encodable>(_ value: T) -> Data? {
     do {
       let encoder = JSONEncoder()
       return try encoder.encode(value)
@@ -28,7 +28,7 @@ struct JCSerialization {
     return nil
   }
 
-  static func convertObject<T: Encodable>(_ object: T) -> [String: Any] {
+  public static func convertObject<T: Encodable>(_ object: T) -> [String: Any] {
     let mirror = Mirror(reflecting: object)
     let dict = Dictionary(uniqueKeysWithValues: mirror.children.lazy.map({ (label: String?, value: Any) -> (String, Any)? in
       guard let label = label else { return nil }
@@ -46,7 +46,7 @@ struct JCSerialization {
     return dict
   }
 
-  static func isJsonEqual<T: Encodable>(_ obj1: T, _ obj2: T) -> Bool {
+  public static func isJsonEqual<T: Encodable>(_ obj1: T, _ obj2: T) -> Bool {
     return encode(obj1) == encode(obj2)
   }
 }

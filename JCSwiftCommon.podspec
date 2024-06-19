@@ -29,6 +29,18 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '13.0'
 
   s.source_files = 'JCSwiftCommon/Classes/**/*'
+
+  s.subspec 'Common' do |common|
+	common.source_files = 'JCSwiftCommon/Classes/Common/**/*'
+  end
+
+  s.subspec 'Foundation+Ext' do |f|
+	f.source_files = 'JCSwiftCommon/Classes/Foundation+Ext/**/*'
+  end
+
+  s.subspec 'SwiftUI+Ext' do |ui|
+	ui.source_files = 'JCSwiftCommon/Classes/SwiftUI+Ext/**/*'
+  end
   
   # s.resource_bundles = {
   #   'JCSwiftCommon' => ['JCSwiftCommon/Assets/*.png']

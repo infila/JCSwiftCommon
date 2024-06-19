@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-extension Color {
-    public init(withHex hexString: String) {
+public extension Color {
+  init(withHex hexString: String) {
     let hex = hexString.replacingOccurrences(of: "#", with: "")
     assert(hex.count == 6 || hex.count == 8)
     let scanner = Scanner(string: hex)

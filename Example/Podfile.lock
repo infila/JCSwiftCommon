@@ -1,5 +1,11 @@
 PODS:
-  - JCSwiftCommon (1.0.0)
+  - JCSwiftCommon (1.0.0):
+    - JCSwiftCommon/Common (= 1.0.0)
+    - "JCSwiftCommon/Foundation+Ext (= 1.0.0)"
+    - "JCSwiftCommon/SwiftUI+Ext (= 1.0.0)"
+  - JCSwiftCommon/Common (1.0.0)
+  - "JCSwiftCommon/Foundation+Ext (1.0.0)"
+  - "JCSwiftCommon/SwiftUI+Ext (1.0.0)"
 
 DEPENDENCIES:
   - JCSwiftCommon (from `../`)
@@ -9,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  JCSwiftCommon: 3a7ca914ada813f66097d91decebeafd0e20a371
+  JCSwiftCommon: 82a31af37d4240135567df275a2864f49be8a322
 
 PODFILE CHECKSUM: 9d805fdfc44a55e8830b13ec90efe6879ea5f39d
 

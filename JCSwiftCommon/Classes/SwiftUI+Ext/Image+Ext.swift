@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Image {
+public extension Image {
   func mask(color: Color) -> some View {
     renderingMode(.template).foregroundColor(color)
   }

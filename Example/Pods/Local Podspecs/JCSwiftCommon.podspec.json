@@ -18,5 +18,19 @@
   "platforms": {
     "ios": "13.0"
   },
-  "source_files": "JCSwiftCommon/Classes/**/*"
+  "source_files": "JCSwiftCommon/Classes/**/*",
+  "subspecs": [
+    {
+      "name": "Common",
+      "source_files": "JCSwiftCommon/Classes/Common/**/*"
+    },
+    {
+      "name": "Foundation+Ext",
+      "source_files": "JCSwiftCommon/Classes/Foundation+Ext/**/*"
+    },
+    {
+      "name": "SwiftUI+Ext",
+      "source_files": "JCSwiftCommon/Classes/SwiftUI+Ext/**/*"
+    }
+  ]
 }

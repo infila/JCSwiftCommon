@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-extension View {
+public extension View {
   func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
     clipShape(RoundedCorner(radius: radius, corners: corners))
   }
@@ -49,7 +49,7 @@ private struct RoundedCorner: Shape {
 }
 
 #if DEBUG
-  extension View {
+  public extension View {
     func printFrame(in coordinateSpace: CoordinateSpace, withPrefixTag prefixTag: String? = nil) -> some View {
       modifier(GeoReaderModifier(coordinateSpace: coordinateSpace, prefixTag: prefixTag))
     }
@@ -77,12 +77,4 @@ private struct RoundedCorner: Shape {
 
 #endif
 
-extension NavigationLink {
-  public init(isActive: Binding<Bool>?, @ViewBuilder destination: () -> Destination, @ViewBuilder label: () -> Label) {
-    if let isActive = isActive {
-      self.init(isActive: isActive, destination: destination, label: label)
-    } else {
-      self.init(destination: destination, label: label)
-    }
-  }
-}
+
