@@ -1,9 +1,9 @@
 {
   "name": "JCSwiftCommon",
-  "version": "0.1.0",
-  "summary": "A short description of JCSwiftCommon.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/James/JCSwiftCommon",
+  "version": "1.0.0",
+  "summary": "Some common functions of Swift.",
+  "description": "JCSwiftCommon has some common functions of Swift, includes some useful extensions.",
+  "homepage": "https://github.com/infila/JCSwiftCommon",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,11 @@
     "James": "infilachen@gmail.com"
   },
   "source": {
-    "git": "https://github.com/James/JCSwiftCommon.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/infila/JCSwiftCommon",
+    "tag": "1.0.0"
   },
   "platforms": {
-    "ios": "10.0"
+    "ios": "13.0"
   },
   "source_files": "JCSwiftCommon/Classes/**/*"
 }

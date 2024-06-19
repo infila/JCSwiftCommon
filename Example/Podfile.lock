@@ -1,0 +1,16 @@
+PODS:
+  - JCSwiftCommon (1.0.0)
+
+DEPENDENCIES:
+  - JCSwiftCommon (from `../`)
+
+EXTERNAL SOURCES:
+  JCSwiftCommon:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JCSwiftCommon: 3a7ca914ada813f66097d91decebeafd0e20a371
+
+PODFILE CHECKSUM: 9d805fdfc44a55e8830b13ec90efe6879ea5f39d
+
+COCOAPODS: 1.15.2
