@@ -13,7 +13,6 @@
 		F2EA2A982C234DD000CC96E1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2EA2A972C234DD000CC96E1 /* Preview Assets.xcassets */; };
 		F2EA2A9E2C234E3B00CC96E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EA2A862C234C2000CC96E1 /* AppDelegate.swift */; };
 		F2EA2AA02C234FEA00CC96E1 /* JCSwiftCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EA2A9F2C234FEA00CC96E1 /* JCSwiftCommon.framework */; };
-		F2EA2AAC2C23849700CC96E1 /* JCSwiftCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EA2A9F2C234FEA00CC96E1 /* JCSwiftCommon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2EA2AAC2C23849700CC96E1 /* JCSwiftCommon.framework in Frameworks */,
 				B44B0BAC414356743F4D30AA /* Pods_JCSwiftCommon_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

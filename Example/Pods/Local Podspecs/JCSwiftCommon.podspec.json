@@ -22,15 +22,15 @@
   "subspecs": [
     {
       "name": "Common",
-      "source_files": "JCSwiftCommon/Classes/Common/**/*"
+      "source_files": "JCSwiftCommon/Classes/Common/*"
     },
     {
       "name": "Foundation+Ext",
-      "source_files": "JCSwiftCommon/Classes/Foundation+Ext/**/*"
+      "source_files": "JCSwiftCommon/Classes/Foundation+Ext/*"
     },
     {
       "name": "SwiftUI+Ext",
-      "source_files": "JCSwiftCommon/Classes/SwiftUI+Ext/**/*"
+      "source_files": "JCSwiftCommon/Classes/SwiftUI+Ext/*"
     }
   ]
 }
