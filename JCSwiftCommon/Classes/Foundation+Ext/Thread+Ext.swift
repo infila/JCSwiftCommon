@@ -13,4 +13,14 @@ public extension Thread {
     defer { objc_sync_exit(lock) }
     closure()
   }
+
+  static func mainThreadExecute(block: (() -> Void)?) {
+    if Thread.isMainThread {
+      block?()
+    } else {
+      DispatchQueue.main.async {
+        block?()
+      }
+    }
+  }
 }
