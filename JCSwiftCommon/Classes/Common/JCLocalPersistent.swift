@@ -56,8 +56,10 @@ public final class JCLocalPersistent {
     return fileManager.fileExists(atPath: exactlyFilePath(forName: fileName))
   }
 
-  public func allFileName(inFolder folderName: String) -> [String] {
+  public func allFileName(inFolder folderName: String? = nil) -> [String] {
     var result: [String]?
+    let folderName = folderName ?? baseDirectory
+
     if fileManager.fileExists(atPath: exactlyFilePath(forName: folderName)) {
       result = try? fileManager.contentsOfDirectory(atPath: exactlyFilePath(forName: folderName))
     }
@@ -120,9 +122,7 @@ public extension JCPersistentObject {
   }
 
   static func load(byId id: String) -> Self? {
-    var result: Array<Self> = []
-    result.load()
-    return result.filter({ $0.id == id }).first
+    return [Self].load().filter({ $0.id == id }).first
   }
 
   static func clear() {
@@ -139,11 +139,10 @@ public extension Array where Element: JCPersistentObject {
     return JCLocalPersistent.shared.saveData(data, toFile: Element.filePath ?? String(typeName: self))
   }
 
-  mutating func load() {
+  static func load() -> [Element] {
     if let oldData = JCLocalPersistent.shared.loadData(fromFile: Element.filePath ?? String(typeName: self)) {
-      self = JCSerialization.decode(from: oldData, decodeType: Array<Element>.self) ?? [Element]()
-    } else {
-      removeAll()
+      return JCSerialization.decode(from: oldData, decodeType: Array<Element>.self) ?? [Element]()
     }
+    return [Element]()
   }
 }
