@@ -28,12 +28,12 @@ public struct JCSerialization {
     return nil
   }
 
-  public static func convertObject<T: Encodable>(_ object: T) -> [String: Any] {
+  public static func objectToDict<T: Encodable>(_ object: T) -> [String: Any] {
     let mirror = Mirror(reflecting: object)
     let dict = Dictionary(uniqueKeysWithValues: mirror.children.lazy.map({ (label: String?, value: Any) -> (String, Any)? in
       guard let label = label else { return nil }
       if let subObject = value as? Codable {
-        let subDic = self.convertObject(subObject)
+        let subDic = self.objectToDict(subObject)
         if !subDic.isEmpty {
           return (label, subDic)
         } else {
@@ -46,7 +46,21 @@ public struct JCSerialization {
     return dict
   }
 
+  public static func jsonString<T: Encodable>(_ instance: T, encoding: String.Encoding = .utf8) -> String? {
+    guard let data = encode(instance) else {
+      return nil
+    }
+    return String(data: data, encoding: encoding)
+  }
+
+  public static func convertJsonString<T: Decodable>(_ string: String, toInstanceType: T.Type, encoding: String.Encoding = .utf8) -> T? {
+    guard let data = string.data(using: encoding) else {
+      return nil
+    }
+    return decode(from: data, decodeType: toInstanceType)
+  }
+
   public static func isJsonEqual<T: Encodable>(_ obj1: T, _ obj2: T) -> Bool {
-    return encode(obj1) == encode(obj2)
+    return jsonString(obj1) == jsonString(obj2)
   }
 }
