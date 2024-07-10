@@ -97,7 +97,7 @@ public protocol JCPersistentObject: Codable {
   static func load(byId id: String) -> Self?
   static func clear()
 
-  var id: String { get }
+  func persistentId() -> String
   func save() -> Bool
 }
 
@@ -112,8 +112,8 @@ public extension JCPersistentObject {
     if let oldData = JCLocalPersistent.shared.loadData(fromFile: Self.filePath ?? String(typeName: self)) {
       result = JCSerialization.decode(from: oldData, decodeType: Array<Self>.self) ?? []
     }
-    let ids = result.map { $0.id }
-    if let index = ids.firstIndex(of: id) {
+    let ids = result.map { $0.persistentId() }
+    if let index = ids.firstIndex(of: persistentId()) {
       result[index] = self
     } else {
       result.append(self)
@@ -121,8 +121,12 @@ public extension JCPersistentObject {
     return result.save()
   }
 
+  static func loadAll() -> [Self]? {
+    return [Self].load()
+  }
+
   static func load(byId id: String) -> Self? {
-    return [Self].load().filter({ $0.id == id }).first
+    return [Self].load().filter({ $0.persistentId() == id }).first
   }
 
   static func clear() {
