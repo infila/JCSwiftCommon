@@ -7,7 +7,9 @@
 
 import Foundation
 
+/// Functions for Object <-> JsonString, and Object <-> Data
 public struct JCSerialization {
+  /// Create an Object from Data
   public static func decode<T: Decodable>(from data: Data, decodeType: T.Type) -> T? {
     do {
       let decoder = JSONDecoder()
@@ -18,6 +20,7 @@ public struct JCSerialization {
     return nil
   }
 
+  /// Transform an Object to Data
   public static func encode<T: Encodable>(_ value: T) -> Data? {
     do {
       let encoder = JSONEncoder()
@@ -28,6 +31,7 @@ public struct JCSerialization {
     return nil
   }
 
+  /// Transform an Object to Dictionary
   public static func objectToDict<T: Encodable>(_ object: T) -> [String: Any] {
     let mirror = Mirror(reflecting: object)
     let dict = Dictionary(uniqueKeysWithValues: mirror.children.lazy.map({ (label: String?, value: Any) -> (String, Any)? in
@@ -46,6 +50,7 @@ public struct JCSerialization {
     return dict
   }
 
+  /// Transform an Object to JsonString
   public static func jsonString<T: Encodable>(_ instance: T, encoding: String.Encoding = .utf8) -> String? {
     guard let data = encode(instance) else {
       return nil
@@ -53,6 +58,7 @@ public struct JCSerialization {
     return String(data: data, encoding: encoding)
   }
 
+  /// Transform a JsonString to Object
   public static func convertJsonString<T: Decodable>(_ string: String, toInstanceType: T.Type, encoding: String.Encoding = .utf8) -> T? {
     guard let data = string.data(using: encoding) else {
       return nil
@@ -60,6 +66,7 @@ public struct JCSerialization {
     return decode(from: data, decodeType: toInstanceType)
   }
 
+  /// Return true if JsonString of these two objects is equal
   public static func isJsonEqual<T: Encodable>(_ obj1: T, _ obj2: T) -> Bool {
     return jsonString(obj1) == jsonString(obj2)
   }

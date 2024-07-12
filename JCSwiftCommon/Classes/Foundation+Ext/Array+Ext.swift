@@ -23,6 +23,7 @@ public extension Array where Element: Equatable {
     }
   }
 
+  /// Remove duplicated Element in array
   var unique: [Element] {
     var uniqueValues: [Element] = []
     forEach { item in

@@ -12,19 +12,28 @@ public extension String {
     case number
     case chat
     case numberAndChat
+    case numberAndChatCases
   }
 
-  static func random(withLength length: UInt, strategy: StringRandomStrategy) -> String {
+  /// Genarate a Random String
+  /// Pass "!@#$%." or something as additional:String to expand random pool
+  static func random(withLength length: UInt, strategy: StringRandomStrategy, additional: String = "") -> String {
     var range: String = ""
+
+    let numbers = "1234567890"
+    let chats = "qwertyuiopasdfghjklzxcvbnm"
+
     switch strategy {
     case .number:
-      range = "1234567890"
-
+      range = numbers
     case .chat:
-      range = "qwertyuiopasdfghjklzxcvbnm"
+      range = chats
     case .numberAndChat:
-      range = "1234567890qwertyuiopasdfghjklzxcvbnm"
+      range = numbers + chats
+    case .numberAndChatCases:
+      range = numbers + chats + chats.capitalized
     }
+    range = range + additional
     var randomOri = [String]()
     range.forEach { randomOri.append(String($0)) }
     var result = ""
@@ -34,11 +43,13 @@ public extension String {
     return result
   }
 
+  /// Return type name of an instance
   init<Subject>(typeName object: Subject) {
     let mirror = Mirror(reflecting: object)
     self.init(reflecting: mirror.subjectType)
   }
 
+  /// Find the last "." in self, and return substring after that.
   func lastComponent() -> String {
     if lastIndex(of: ".") == nil {
       return self
@@ -59,6 +70,10 @@ public extension String {
       return dic
     }
     return nil
+  }
+
+  func intValue() -> Int? {
+    Int(self)
   }
 
   func doubleValue() -> Double? {

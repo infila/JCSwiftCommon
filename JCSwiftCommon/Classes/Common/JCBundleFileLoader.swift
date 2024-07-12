@@ -8,6 +8,7 @@
 import Foundation
 
 public struct JCBundleFileLoader {
+  /// Load a plist as a Model object
   public static func loadPlist<T: Decodable>(from fileName: String, decodeType: T.Type) -> T? {
     if let path = Bundle.main.path(forResource: fileName, ofType: "plist"),
        let xml = FileManager.default.contents(atPath: path),
@@ -18,6 +19,7 @@ public struct JCBundleFileLoader {
     return nil
   }
 
+  /// Load a json file as a Model object
   public static func loadJsonFile<T: Decodable>(from fileName: String, decodeType: T.Type) -> T? {
     var data = Data()
 

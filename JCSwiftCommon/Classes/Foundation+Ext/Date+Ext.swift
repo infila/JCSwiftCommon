@@ -8,29 +8,52 @@
 import Foundation
 
 public extension Date {
-  func format2String(_ style: String) -> String {
-    let formatter = DateFormatter()
-    formatter.dateFormat = style
-    return formatter.string(from: self)
-  }
+  struct FormatStyle {
+    static let m2d2y4Splash = "MM/dd/yyyy" /// 12/31/1970
+    static let m2d2y2Splash = "MM/dd/yy" /// 12/31/70
+    static let m3d2y4Splash = "MMM/dd/yyyy" /// Dec/31/1970
+    static let m3d2y4SQS = "MMM dd, yyyy" /// Dec 31, 1970
+    static let y4m3d2Splash = "yyyy/MMM/dd" /// 1970/Dec/31
+    static let y4m2d2Dash = "yyyy-MM-dd" /// 1970-12-31
+    static let d2m2y2Splash = "dd/mm/yy" /// 31/12/70
+    static let d2m2y4Splash = "dd/MM/yyyy" /// 31/12/1970
+    static let d2m2y4Dot = "dd.MM.yyyy" /// 31.12.1970
+    static let d2mMAXy2Space = "dd MMMM yyyy" /// 31 December 1970
 
-  init(timeMills: Int) {
-    self.init(timeIntervalSince1970: TimeInterval(timeMills / 1000))
+    static let H2m2s2 = "HH:mm:ss" /// 01:59:59
+    static let H1m2 = "H:mm" /// 1:59
+    static let h2m2s2 = "hh:mm:ss a" /// 01:59:59 AM
+    static let h1m2 = "h:mm a" /// 1:59 AM
   }
 
   init(string: String, withFormat style: String) {
     let formatter = DateFormatter()
     formatter.dateFormat = style
     let date = formatter.date(from: string)
-    self.init(timeMills: date?.timeMills ?? 0)
+    self.init(timeMillis: date?.timeMillis ?? 0)
   }
 
-  var timeMills: Int {
+  ///
+  func format2String(_ style: String) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = style
+    return formatter.string(from: self)
+  }
+
+  /// Init with milliseconds
+  init(timeMillis: Int) {
+    self.init(timeIntervalSince1970: TimeInterval(timeMillis / 1000))
+  }
+
+  /// milliseconds for current date
+  var timeMillis: Int {
     return Int(timeIntervalSince1970) * 1000
   }
 }
 
 public extension Date {
+  /// Returns self.day - anotherDay.day
+  /// Like today - yesterday = 1, yesterday - tomorrow = -2
   func compareDays(with anotherDay: Date) -> Int {
     guard let day = calendar.dateComponents([Calendar.Component.day], from: self, to: anotherDay).day else {
       return 0
@@ -38,11 +61,15 @@ public extension Date {
     return day
   }
 
+  /// Returns the first moment of a given Date, as a Date.
+  /// Depends on current time zone.
   func dayStartDate() -> Date {
     calendar.startOfDay(for: self)
   }
 }
 
+/// From this below is not written by James Chen.
+/// But I'm sorry I don't remember where I copied this from, thanks to the Author at somewhere, cheers!
 public extension Date {
   /// Create a new date form calendar components.
   ///

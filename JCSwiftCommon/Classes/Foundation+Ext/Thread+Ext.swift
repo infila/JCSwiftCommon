@@ -14,6 +14,7 @@ public extension Thread {
     closure()
   }
 
+  /// execute the block on main thread
   static func mainThreadExecute(block: (() -> Void)?) {
     if Thread.isMainThread {
       block?()
