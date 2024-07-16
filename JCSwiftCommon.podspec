@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'James' => 'infilachen@gmail.com' }
   s.source           = { :git => 'https://github.com/infila/JCSwiftCommon', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://www.linkedin.com/in/jameschen5428'
 
   s.ios.deployment_target = '13.0'
 
@@ -36,10 +36,6 @@ Pod::Spec.new do |s|
 
   s.subspec 'Foundation+Ext' do |f|
     f.source_files = 'JCSwiftCommon/Classes/Foundation+Ext/*'
-  end
-
-  s.subspec 'SwiftUI+Ext' do |ui|
-    ui.source_files = 'JCSwiftCommon/Classes/SwiftUI+Ext/*'
   end
   
   # s.resource_bundles = {
