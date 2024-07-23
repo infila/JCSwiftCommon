@@ -24,6 +24,7 @@ public struct JCSerialization {
   public static func encode<T: Encodable>(_ value: T) -> Data? {
     do {
       let encoder = JSONEncoder()
+      encoder.outputFormatting = .sortedKeys
       return try encoder.encode(value)
     } catch {
       assert(false, "Couldn't parse \(value) to data:\n\(error)")
@@ -36,7 +37,13 @@ public struct JCSerialization {
     let mirror = Mirror(reflecting: object)
     let dict = Dictionary(uniqueKeysWithValues: mirror.children.lazy.map({ (label: String?, value: Any) -> (String, Any)? in
       guard let label = label else { return nil }
-      if let subObject = value as? Codable {
+      // It says  "Conditional cast from 'Any' to 'Optional<Any>' always succeeds", but actually it's not!
+      // While value: Any = Optional(nil), value == nil returns false here,
+      // value == nil returns true, only after casting value: Any to Optional<Any>
+      if let value = value as? Optional<Any>, value == nil {
+        return nil
+      }
+      if let subObject = value as? Encodable {
         let subDic = self.objectToDict(subObject)
         if !subDic.isEmpty {
           return (label, subDic)
