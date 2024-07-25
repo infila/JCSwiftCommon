@@ -9,15 +9,9 @@
 Pod::Spec.new do |s|
   s.name             = 'JCSwiftCommon'
   s.version          = '1.0.0'
-  s.summary          = 'Some common functions of Swift.'
+  s.summary          = 'Some common functions for Swift.'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = 'JCSwiftCommon has some common functions of Swift, includes some useful extensions.'
+  s.description      = 'SwiftCommon includes some commonly used and fundamental Swift methods. For example, extensions to certain system methods, some serialization and deserialization methods, and a very lightweight local storage tool which based on File system IO.'
 
   s.homepage         = 'https://github.com/infila/JCSwiftCommon'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
