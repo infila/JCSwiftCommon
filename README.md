@@ -17,6 +17,22 @@ Here are three frameworks for junior developers. They can help you increase deve
 
 ## Example
 
+**Using JCLocalPersistent to implement storing data function.** For example, the following code stores the Person Object person1 to local: 
+```ruby
+let person1 = Person(name: "A", age: 18)
+person1.save()
+```
+
+**Using JCLocalPersistent to load the local data.** For example, the following code loads all the Person data from local storage.
+```ruby
+let people = [Person].load()
+```
+
+In addition, you can also load the Person object by its Id.
+```ruby
+let newPerson = Person.load(byId: "A")
+```
+
 To see more examples or test cases, please go to:
 [JCSwiftRestful](https://github.com/infila/JCSwiftRestful)
 
@@ -35,7 +51,7 @@ pod 'JCSwiftCommon'
 
 ## Author
 
-James, infilachen@gmail.com, [LinkedIn](https://www.linkedin.com/in/jameschen5428)
+**James:** infilachen@gmail.com, [LinkedIn](https://www.linkedin.com/in/jameschen5428)
 
 ## License
 
