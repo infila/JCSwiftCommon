@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JCSwiftCommon'
-  s.version          = '1.0.0'
+  s.version          = '1.0.2'
   s.summary          = 'Some common functions for Swift.'
 
   s.description      = 'SwiftCommon includes some commonly used and fundamental Swift methods. For example, extensions to certain system methods, some serialization and deserialization methods, and a very lightweight local storage tool which based on File system IO.'
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'James' => 'infilachen@gmail.com' }
-  s.source           = { :git => 'https://github.com/infila/JCSwiftCommon.git', :tag => '1.0.0' }
+  s.source           = { :git => 'https://github.com/infila/JCSwiftCommon.git', :tag => '1.0.2' }
   s.social_media_url = 'https://www.linkedin.com/in/jameschen5428'
 
   s.ios.deployment_target = '13.0'
