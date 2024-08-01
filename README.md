@@ -17,6 +17,33 @@ Here are three frameworks for junior developers. They can help you increase deve
 
 ## Example
 
+To store objects on disk, you only need to add the **JCPersistentObject** protocol to your class, like:
+```ruby
+class/struct Person: JCPersistentObject { ... }
+```
+
+And when you want to save an instance of Person like: 
+```ruby
+let person = Person(name: "A", age: 18)
+```
+
+You can simply call:
+```ruby
+person.save()
+```
+To implement the JCPersistentObject protocol, you need to override the persistentId() -> String method. After that, when the persistentId has not been stored before, save() will actually perform an append(). However, when the same persistentId has already been stored, save() will be equivalent to update().
+
+And when you want all Person in file database, you do like:
+```ruby
+let people = [Person].load()
+Or
+let newPerson = Person.load(byId: "James")
+```
+
+save(), load() and load(byId: String) is already implemented by default, just enjoy. XD
+
+**This is specifically designed for simple scenarios and small amounts of data. For complex scenarios or data that requires frequent CRUD operations, please use a conventional database like CoreData or Sqlite. Thank you.**
+
 To see more examples or test cases, please go to:
 [JCSwiftRestful](https://github.com/infila/JCSwiftRestful)
 
@@ -36,6 +63,8 @@ pod 'JCSwiftCommon'
 ## Author
 
 James, infilachen@gmail.com, [LinkedIn](https://www.linkedin.com/in/jameschen5428)
+
+Fanny, fanfan.feng9@gmail.com
 
 ## License
 
