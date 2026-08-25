@@ -11,6 +11,9 @@ import Foundation
 public struct JCSerialization {
   /// Create an Object from Data
   public static func decode<T: Decodable>(from data: Data, decodeType: T.Type) -> T? {
+    if data.isEmpty {
+      return nil
+    }
     do {
       let decoder = JSONDecoder()
       return try decoder.decode(T.self, from: data)
