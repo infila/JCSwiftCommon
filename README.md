@@ -46,13 +46,29 @@ In Xcode, select **File > Add Package Dependencies** and enter:
 https://github.com/infila/JCSwiftCommon.git
 ```
 
-Select version `1.1.0` or later, then:
+Choose **Up to Next Major Version** starting at `1.1.1`, add the `JCSwiftCommon` product to your app target, then:
 
 ```swift
 import JCSwiftCommon
 ```
 
-### CocoaPods
+For a `Package.swift` manifest:
+
+```swift
+dependencies: [
+  .package(url: "https://github.com/infila/JCSwiftCommon.git", from: "1.1.1")
+]
+```
+
+Add the product to the dependencies of the target that imports it:
+
+```swift
+.product(name: "JCSwiftCommon", package: "JCSwiftCommon")
+```
+
+Release tags follow [Semantic Versioning](https://semver.org/). Swift Package Manager is the primary distribution channel.
+
+### CocoaPods (legacy)
 
 CocoaPods Trunk currently contains version `1.0.2`:
 
@@ -63,7 +79,7 @@ pod 'JCSwiftCommon', '~> 1.0.2'
 To use the current Git release:
 
 ```ruby
-pod 'JCSwiftCommon', :git => 'https://github.com/infila/JCSwiftCommon.git', :tag => '1.1.0'
+pod 'JCSwiftCommon', :git => 'https://github.com/infila/JCSwiftCommon.git', :tag => '1.1.1'
 ```
 
 ## Authors

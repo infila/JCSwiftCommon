@@ -40,10 +40,8 @@ public struct JCSerialization {
     let mirror = Mirror(reflecting: object)
     let dict = Dictionary(uniqueKeysWithValues: mirror.children.lazy.map({ (label: String?, value: Any) -> (String, Any)? in
       guard let label = label else { return nil }
-      // It says  "Conditional cast from 'Any' to 'Optional<Any>' always succeeds", but actually it's not!
-      // While value: Any = Optional(nil), value == nil returns false here,
-      // value == nil returns true, only after casting value: Any to Optional<Any>
-      if let value = value as? Optional<Any>, value == nil {
+      let valueMirror = Mirror(reflecting: value)
+      if valueMirror.displayStyle == .optional, valueMirror.children.isEmpty {
         return nil
       }
       if let subObject = value as? Encodable {
