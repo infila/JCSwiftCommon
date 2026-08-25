@@ -38,6 +38,7 @@ Pods/
 # Swift Package Manager
 .build/
 .swiftpm/
+Package.resolved
 
 # Generated CocoaPods project link
 _Pods.xcodeproj
