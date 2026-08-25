@@ -53,6 +53,18 @@ iOS Deployment Target >= 13.0
 
 ## Installation
 
+### Swift Package Manager
+
+In Xcode, select **File > Add Package Dependencies** and enter:
+
+```text
+https://github.com/infila/JCSwiftCommon.git
+```
+
+Use version `1.1.0` or later, then import the library with `import JCSwiftCommon`.
+
+### CocoaPods
+
 JCSwiftCommon is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
