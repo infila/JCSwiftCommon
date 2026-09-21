@@ -18,5 +18,9 @@ let package = Package(
       name: "JCSwiftCommon",
       path: "JCSwiftCommon/Classes"
     ),
+    .testTarget(
+      name: "JCSwiftCommonTests",
+      dependencies: ["JCSwiftCommon"]
+    ),
   ]
 )

@@ -46,7 +46,7 @@ In Xcode, select **File > Add Package Dependencies** and enter:
 https://github.com/infila/JCSwiftCommon.git
 ```
 
-Choose **Up to Next Major Version** starting at `1.1.1`, add the `JCSwiftCommon` product to your app target, then:
+Choose **Up to Next Major Version** starting at `2.0.0`, add the `JCSwiftCommon` product to your app target, then:
 
 ```swift
 import JCSwiftCommon
@@ -56,7 +56,7 @@ For a `Package.swift` manifest:
 
 ```swift
 dependencies: [
-  .package(url: "https://github.com/infila/JCSwiftCommon.git", from: "1.1.1")
+  .package(url: "https://github.com/infila/JCSwiftCommon.git", from: "2.0.0")
 ]
 ```
 
@@ -79,7 +79,20 @@ pod 'JCSwiftCommon', '~> 1.0.2'
 To use the current Git release:
 
 ```ruby
-pod 'JCSwiftCommon', :git => 'https://github.com/infila/JCSwiftCommon.git', :tag => '1.1.1'
+pod 'JCSwiftCommon', :git => 'https://github.com/infila/JCSwiftCommon.git', :tag => '2.0.0'
+```
+
+## Development
+
+This repository contains the library and its Swift Package Manager unit tests. It does not include an app target or demo app. The runnable demo is maintained in [JCSwiftRestful](https://github.com/infila/JCSwiftRestful).
+
+- `JCSwiftCommon/Classes`: library sources shared by Swift Package Manager and CocoaPods.
+- `Tests/JCSwiftCommonTests`: unit tests that run without an app host.
+
+Run the tests from the repository root:
+
+```sh
+swift test
 ```
 
 ## Authors
